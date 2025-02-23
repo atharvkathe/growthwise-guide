@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -6,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 interface AssessmentData {
   domain: string;
@@ -50,6 +50,7 @@ const TIME_OPTIONS = [
 ];
 
 const AssessmentQuestions = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [data, setData] = useState<AssessmentData>({
     domain: "",
@@ -66,7 +67,11 @@ const AssessmentQuestions = () => {
   });
 
   const handleNext = () => {
-    setStep((prev) => prev + 1);
+    if (step === 4) {
+      navigate("/assessment/analysis");
+    } else {
+      setStep((prev) => prev + 1);
+    }
   };
 
   const handleBack = () => {
@@ -81,7 +86,6 @@ const AssessmentQuestions = () => {
             selectedDomain={data.domain}
             onSelect={(domain) => {
               setData((prev) => ({ ...prev, domain }));
-              // Auto-advance to next step
               setTimeout(() => handleNext(), 500);
             }}
           />
@@ -157,7 +161,7 @@ const AssessmentQuestions = () => {
           </motion.div>
         </AnimatePresence>
 
-        {step !== 1 && ( // Hide on first step since it auto-advances
+        {step !== 1 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
