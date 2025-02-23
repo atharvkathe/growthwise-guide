@@ -1,9 +1,8 @@
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Brain, ChevronRight, LineChart, Target } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ANALYSIS_STEPS = [
   { icon: Brain, text: "Analyzing your skills and expertise..." },
@@ -13,6 +12,7 @@ const ANALYSIS_STEPS = [
 
 const AssessmentAnalysis = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [progress, setProgress] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -21,7 +21,9 @@ const AssessmentAnalysis = () => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(() => navigate("/assessment/results"), 500);
+          setTimeout(() => navigate("/assessment/results", { 
+            state: { domain: location.state?.domain } 
+          }), 500);
           return 100;
         }
         return prev + 1;
@@ -29,7 +31,7 @@ const AssessmentAnalysis = () => {
     }, 50);
 
     return () => clearInterval(timer);
-  }, [navigate]);
+  }, [navigate, location.state?.domain]);
 
   useEffect(() => {
     setCurrentStep(Math.floor((progress / 100) * ANALYSIS_STEPS.length));

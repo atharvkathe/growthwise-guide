@@ -12,26 +12,88 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { useLocation } from "react-router-dom";
 
-const mockData = {
-  strengths: [
-    { skill: "Machine Learning", score: 8 },
-    { skill: "Data Analysis", score: 7.5 },
-    { skill: "Python Programming", score: 7 },
-  ],
-  weaknesses: [
-    { skill: "Deep Learning", score: 4 },
-    { skill: "Neural Networks", score: 4.5 },
-    { skill: "Computer Vision", score: 5 },
-  ],
-  recommendedPath: [
-    "Complete Neural Networks Fundamentals course",
-    "Practice with TensorFlow projects",
-    "Join AI Community forums",
-  ],
+// Domain-specific mock data
+const domainData = {
+  ai: {
+    strengths: [
+      { skill: "Machine Learning", score: 8 },
+      { skill: "Data Analysis", score: 7.5 },
+      { skill: "Python Programming", score: 7 },
+    ],
+    weaknesses: [
+      { skill: "Deep Learning", score: 4 },
+      { skill: "Neural Networks", score: 4.5 },
+      { skill: "Computer Vision", score: 5 },
+    ],
+    recommendedPath: [
+      "Complete Neural Networks Fundamentals course",
+      "Practice with TensorFlow projects",
+      "Join AI Community forums",
+    ],
+  },
+  web: {
+    strengths: [
+      { skill: "HTML/CSS", score: 8.5 },
+      { skill: "JavaScript", score: 7.5 },
+      { skill: "React", score: 7 },
+    ],
+    weaknesses: [
+      { skill: "Backend Development", score: 4 },
+      { skill: "System Design", score: 4.5 },
+      { skill: "Database Management", score: 5 },
+    ],
+    recommendedPath: [
+      "Complete Backend Development Bootcamp",
+      "Build Full-Stack Projects",
+      "Learn Database Design Principles",
+    ],
+  },
+  finance: {
+    strengths: [
+      { skill: "Financial Analysis", score: 8 },
+      { skill: "Investment", score: 7.5 },
+      { skill: "Economics", score: 7 },
+    ],
+    weaknesses: [
+      { skill: "Risk Management", score: 4 },
+      { skill: "Portfolio Management", score: 4.5 },
+      { skill: "Financial Modeling", score: 5 },
+    ],
+    recommendedPath: [
+      "Risk Management Certification",
+      "Advanced Portfolio Management Course",
+      "Financial Modeling Workshop",
+    ],
+  },
+  marketing: {
+    strengths: [
+      { skill: "Digital Marketing", score: 8 },
+      { skill: "Social Media", score: 7.5 },
+      { skill: "Content Strategy", score: 7 },
+    ],
+    weaknesses: [
+      { skill: "Analytics", score: 4 },
+      { skill: "SEO", score: 4.5 },
+      { skill: "Marketing Automation", score: 5 },
+    ],
+    recommendedPath: [
+      "Advanced Analytics Certification",
+      "SEO Mastery Course",
+      "Marketing Automation Workshop",
+    ],
+  },
 };
 
 const AssessmentResults = () => {
+  // Get the state from the location
+  const location = useLocation();
+  const selectedDomain = (location.state?.domain as keyof typeof domainData) || "ai";
+  
+  // Get domain-specific data
+  const mockData = domainData[selectedDomain];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-accent/5 py-12 px-4">
       <div className="max-w-6xl mx-auto space-y-12">

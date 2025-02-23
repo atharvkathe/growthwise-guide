@@ -68,7 +68,7 @@ const AssessmentQuestions = () => {
 
   const handleNext = () => {
     if (step === 4) {
-      navigate("/assessment/analysis");
+      navigate("/assessment/analysis", { state: { domain: data.domain } });
     } else {
       setStep((prev) => prev + 1);
     }
