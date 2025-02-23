@@ -2,8 +2,11 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Brain, Target, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 export const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-20 bg-gradient-to-b from-background to-accent/5">
       <motion.div
@@ -30,6 +33,7 @@ export const HeroSection = () => {
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-white transition-all duration-300 group"
+            onClick={() => navigate("/assessment")}
           >
             Start Assessment
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
