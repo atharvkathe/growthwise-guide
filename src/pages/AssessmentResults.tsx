@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Download, ArrowRight, Brain, Target, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,8 +12,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useLocation } from "react-router-dom";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import { toast } from "@/components/ui/use-toast";
 
-// Domain-specific mock data
 const domainData = {
   ai: {
     strengths: [
@@ -86,17 +87,73 @@ const domainData = {
   },
 };
 
+const learningResources = {
+  ai: {
+    url: "https://www.coursera.org/learn/machine-learning",
+    title: "Machine Learning by Stanford University",
+  },
+  web: {
+    url: "https://www.freecodecamp.org/learn/2022/responsive-web-design/",
+    title: "FreeCodeCamp Web Development Course",
+  },
+  finance: {
+    url: "https://www.edx.org/learn/finance/introduction-to-finance-accounting",
+    title: "Introduction to Finance & Accounting",
+  },
+  marketing: {
+    url: "https://www.hubspot.com/resources/courses/digital-marketing",
+    title: "HubSpot Digital Marketing Course",
+  },
+};
+
 const AssessmentResults = () => {
-  // Get the state from the location
   const location = useLocation();
   const selectedDomain = (location.state?.domain as keyof typeof domainData) || "ai";
-  
-  // Get domain-specific data
   const mockData = domainData[selectedDomain];
+  const resultRef = useRef<HTMLDivElement>(null);
+
+  const handleDownloadReport = async () => {
+    try {
+      if (!resultRef.current) return;
+
+      toast({
+        title: "Generating PDF...",
+        description: "Please wait while we prepare your report.",
+      });
+
+      const canvas = await html2canvas(resultRef.current, {
+        scale: 2,
+        backgroundColor: '#ffffff',
+      });
+
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const imgWidth = 210; // A4 width in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
+      pdf.save(`${selectedDomain}-assessment-report.pdf`);
+
+      toast({
+        title: "Report downloaded!",
+        description: "Your assessment report has been downloaded successfully.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error generating report",
+        description: "There was an error generating your PDF report. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleStartLearning = () => {
+    const resource = learningResources[selectedDomain];
+    window.open(resource.url, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-accent/5 py-12 px-4">
-      <div className="max-w-6xl mx-auto space-y-12">
+      <div ref={resultRef} className="max-w-6xl mx-auto space-y-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -109,7 +166,6 @@ const AssessmentResults = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Strengths Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -132,7 +188,6 @@ const AssessmentResults = () => {
             </div>
           </motion.div>
 
-          {/* Weaknesses Section */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -156,7 +211,6 @@ const AssessmentResults = () => {
           </motion.div>
         </div>
 
-        {/* Skills Chart */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -183,7 +237,6 @@ const AssessmentResults = () => {
           </div>
         </motion.div>
 
-        {/* Learning Path */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -214,7 +267,6 @@ const AssessmentResults = () => {
           </div>
         </motion.div>
 
-        {/* Action Buttons */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -223,6 +275,7 @@ const AssessmentResults = () => {
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-white"
+            onClick={handleStartLearning}
           >
             Start Learning Path
             <ArrowRight className="ml-2 w-4 h-4" />
@@ -231,6 +284,7 @@ const AssessmentResults = () => {
             variant="outline"
             size="lg"
             className="border-2"
+            onClick={handleDownloadReport}
           >
             Download Report
             <Download className="ml-2 w-4 h-4" />

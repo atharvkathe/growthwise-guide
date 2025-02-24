@@ -6,6 +6,7 @@ import { Slider } from "@/components/ui/slider";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface AssessmentData {
   domain: string;
@@ -68,8 +69,25 @@ const AssessmentQuestions = () => {
 
   const handleNext = () => {
     if (step === 4) {
+      if (!data.learningPreferences.method || !data.learningPreferences.timePerWeek || 
+          !data.challenges.length || !data.goals.shortTerm || !data.goals.longTerm) {
+        toast({
+          title: "Please fill in all fields",
+          description: "All fields are required to generate your personalized learning path.",
+          variant: "destructive",
+        });
+        return;
+      }
       navigate("/assessment/analysis", { state: { domain: data.domain } });
     } else {
+      if (step === 3 && (!data.learningPreferences.method || !data.learningPreferences.timePerWeek)) {
+        toast({
+          title: "Please fill in all fields",
+          description: "Please select both your learning method and time commitment.",
+          variant: "destructive",
+        });
+        return;
+      }
       setStep((prev) => prev + 1);
     }
   };
