@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { HeroSection } from "@/components/HeroSection";
 import { Navbar } from "@/components/Navbar";
@@ -126,7 +125,7 @@ const Index = () => {
         <HeroSection />
         
         {/* Features Section */}
-        <section className="py-20 px-4 bg-gradient-to-b from-background to-accent/5">
+        <section id="features" className="py-20 px-4 bg-gradient-to-b from-background to-accent/5">
           <div className="container mx-auto max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -165,7 +164,7 @@ const Index = () => {
         </section>
 
         {/* How It Works Section */}
-        <section className="py-20 px-4">
+        <section id="how-it-works" className="py-20 px-4">
           <div className="container mx-auto max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -203,7 +202,7 @@ const Index = () => {
         </section>
 
         {/* Pricing Section */}
-        <section className="py-20 px-4 bg-gradient-to-b from-background to-accent/5">
+        <section id="pricing" className="py-20 px-4 bg-gradient-to-b from-background to-accent/5">
           <div className="container mx-auto max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -264,7 +263,7 @@ const Index = () => {
         </section>
 
         {/* About Section */}
-        <section className="py-20 px-4">
+        <section id="about" className="py-20 px-4">
           <div className="container mx-auto max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

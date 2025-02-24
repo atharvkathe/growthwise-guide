@@ -3,6 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 
 export const Navbar = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-lg border-b z-50">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -11,7 +18,7 @@ export const Navbar = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
-          <NavLinks />
+          <NavLinks onSectionClick={scrollToSection} />
         </div>
 
         <div className="flex items-center gap-4">
@@ -30,17 +37,28 @@ export const Navbar = () => {
   );
 };
 
-const NavLinks = () => {
+interface NavLinksProps {
+  onSectionClick: (sectionId: string) => void;
+}
+
+const NavLinks = ({ onSectionClick }: NavLinksProps) => {
+  const navItems = [
+    { label: "Features", id: "features" },
+    { label: "How it Works", id: "how-it-works" },
+    { label: "Pricing", id: "pricing" },
+    { label: "About", id: "about" },
+  ];
+
   return (
     <>
-      {["Features", "How it Works", "Pricing", "About"].map((item) => (
-        <a
-          key={item}
-          href="#"
+      {navItems.map((item) => (
+        <button
+          key={item.id}
+          onClick={() => onSectionClick(item.id)}
           className="text-muted-foreground hover:text-foreground transition-colors duration-200"
         >
-          {item}
-        </a>
+          {item.label}
+        </button>
       ))}
     </>
   );
