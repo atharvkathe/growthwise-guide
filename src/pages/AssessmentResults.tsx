@@ -1,3 +1,5 @@
+
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Download, ArrowRight, Brain, Target, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
