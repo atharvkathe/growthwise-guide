@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { HeroSection } from "@/components/HeroSection";
 import { Navbar } from "@/components/Navbar";
-import { Brain, Target, ChartBarSquare, FileBarChart, ArrowRight, Check } from "lucide-react";
+import { Brain, Target, BarChart3, FileBarChart, ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -27,7 +27,7 @@ const Index = () => {
       description: "Tailored recommendations to help you improve efficiently",
     },
     {
-      icon: ChartBarSquare,
+      icon: BarChart3,
       title: "Real-time Progress Tracking",
       description: "Monitor your development with AI-driven insights",
     },
