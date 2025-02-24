@@ -6,7 +6,7 @@ import { Slider } from "@/components/ui/slider";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast } from "@/hooks/use-toast";
 
 interface AssessmentData {
   domain: string;
