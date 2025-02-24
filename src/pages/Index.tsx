@@ -1,6 +1,8 @@
+
 import { motion } from "framer-motion";
 import { HeroSection } from "@/components/HeroSection";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { Brain, Target, BarChart3, FileBarChart, ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -344,6 +346,7 @@ const Index = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 };
