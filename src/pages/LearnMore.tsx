@@ -67,7 +67,7 @@ const LearnMore = () => {
       <Navbar />
       <main className="pt-16">
         <section className="py-20 px-4">
-          <div className="container mx-auto max-w-6xl">
+          <div className="container mx-auto max-w-3xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -80,97 +80,114 @@ const LearnMore = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+            <div className="space-y-14">
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="space-y-8"
+                className="space-y-4"
               >
-                <div>
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                    <Brain className="w-6 h-6 text-primary" />
-                    What is SkillSense AI?
-                  </h3>
-                  <p className="text-muted-foreground">
-                    SkillSense AI is an innovative platform that leverages advanced artificial intelligence to analyze your skills, identify growth opportunities, and create personalized learning paths. We combine cutting-edge technology with proven learning methodologies to accelerate your professional development.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                    <Target className="w-6 h-6 text-primary" />
-                    How Does It Work?
-                  </h3>
-                  <ul className="space-y-4">
-                    {steps.map((step) => (
-                      <li key={step.number} className="flex gap-4">
-                        <span className="text-primary font-bold">{step.number}</span>
-                        <div>
-                          <h4 className="font-semibold">{step.title}</h4>
-                          <p className="text-muted-foreground">{step.description}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Brain className="w-6 h-6 text-primary" />
+                  What is SkillSense AI?
+                </h3>
+                <p className="text-muted-foreground">
+                  SkillSense AI is an innovative platform that leverages advanced artificial intelligence to analyze your skills, identify growth opportunities, and create personalized learning paths. We combine cutting-edge technology with proven learning methodologies to accelerate your professional development.
+                </p>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="space-y-4"
+              >
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Target className="w-6 h-6 text-primary" />
+                  How Does It Work?
+                </h3>
+                <Card className="border-2 shadow-sm hover:shadow-md transition-all duration-300">
+                  <CardContent className="pt-6">
+                    <ul className="space-y-6">
+                      {steps.map((step) => (
+                        <li key={step.number} className="flex gap-4">
+                          <div className="text-primary font-bold text-lg">{step.number}</div>
+                          <div>
+                            <h4 className="font-semibold">{step.title}</h4>
+                            <p className="text-muted-foreground">{step.description}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="space-y-4"
+              >
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Users className="w-6 h-6 text-primary" />
+                  Who Can Benefit?
+                </h3>
+                <div className="grid gap-4">
+                  {beneficiaries.map((beneficiary) => (
+                    <Card 
+                      key={beneficiary.title} 
+                      className="border-2 transition-all duration-300 hover:shadow-md hover:border-primary/50 hover:-translate-y-1"
+                    >
+                      <CardHeader className="space-y-1">
+                        <CardTitle className="text-xl flex items-center gap-2">
+                          <beneficiary.icon className="w-5 h-5 text-primary" />
+                          {beneficiary.title}
+                        </CardTitle>
+                        <CardDescription>{beneficiary.description}</CardDescription>
+                      </CardHeader>
+                    </Card>
+                  ))}
                 </div>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="space-y-8"
+                className="space-y-4"
               >
-                <div>
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                    <Users className="w-6 h-6 text-primary" />
-                    Who Can Benefit?
-                  </h3>
-                  <div className="grid gap-4">
-                    {beneficiaries.map((beneficiary) => (
-                      <Card key={beneficiary.title}>
-                        <CardHeader className="space-y-1">
-                          <CardTitle className="text-xl flex items-center gap-2">
-                            <beneficiary.icon className="w-5 h-5 text-primary" />
-                            {beneficiary.title}
-                          </CardTitle>
-                          <CardDescription>{beneficiary.description}</CardDescription>
-                        </CardHeader>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                    <LightbulbIcon className="w-6 h-6 text-primary" />
-                    Why Choose SkillSense AI?
-                  </h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                      <div>
-                        <p className="font-medium">AI-Driven Insights</p>
-                        <p className="text-muted-foreground">Advanced algorithms provide precise skill analysis and recommendations</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                      <div>
-                        <p className="font-medium">Personalized Learning</p>
-                        <p className="text-muted-foreground">Customized paths tailored to your goals and learning style</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                      <div>
-                        <p className="font-medium">Real-Time Progress Tracking</p>
-                        <p className="text-muted-foreground">Monitor your growth with detailed analytics and insights</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <LightbulbIcon className="w-6 h-6 text-primary" />
+                  Why Choose SkillSense AI?
+                </h3>
+                <Card className="border-2 shadow-sm hover:shadow-md transition-all duration-300">
+                  <CardContent className="pt-6">
+                    <ul className="space-y-5">
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-primary mr-3 mt-1" />
+                        <div>
+                          <p className="font-medium">AI-Driven Insights</p>
+                          <p className="text-muted-foreground">Advanced algorithms provide precise skill analysis and recommendations</p>
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-primary mr-3 mt-1" />
+                        <div>
+                          <p className="font-medium">Personalized Learning</p>
+                          <p className="text-muted-foreground">Customized paths tailored to your goals and learning style</p>
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-primary mr-3 mt-1" />
+                        <div>
+                          <p className="font-medium">Real-Time Progress Tracking</p>
+                          <p className="text-muted-foreground">Monitor your growth with detailed analytics and insights</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
               </motion.div>
             </div>
 
@@ -178,7 +195,7 @@ const LearnMore = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center"
+              className="text-center mt-16"
             >
               <h3 className="text-2xl font-bold mb-4">Ready to Begin Your Journey?</h3>
               <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -186,7 +203,7 @@ const LearnMore = () => {
               </p>
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary/90"
+                className="bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-105"
                 onClick={startAssessment}
               >
                 Start Free Assessment

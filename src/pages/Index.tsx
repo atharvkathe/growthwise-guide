@@ -169,7 +169,7 @@ const Index = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.2 }}
                 >
-                  <Card className="relative overflow-hidden border-2">
+                  <Card className="relative overflow-hidden border-2 transition-all duration-300 hover:shadow-md hover:border-primary/50 hover:-translate-y-1">
                     <CardHeader>
                       <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                         <feature.icon className="h-6 w-6 text-primary" />
@@ -184,7 +184,7 @@ const Index = () => {
             
             <div className="mt-12 text-center">
               <Link to="/learn-more">
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="hover:scale-105 transition-all duration-300">
                   Learn More About SkillSense AI
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
@@ -216,7 +216,7 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.2 }}
-                  className="relative"
+                  className="relative border-2 p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:border-primary/50 hover:-translate-y-1"
                 >
                   <div className="absolute -left-4 top-0 text-4xl font-bold text-primary/10">
                     {step.number}
@@ -231,7 +231,7 @@ const Index = () => {
             
             <div className="mt-12 text-center">
               <Link to="/assessment">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 hover:scale-105 transition-all duration-300">
                   Start Free Assessment
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
@@ -264,7 +264,7 @@ const Index = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.2 }}
                 >
-                  <Card className={`relative overflow-hidden ${plan.popular ? 'border-primary border-2' : ''}`}>
+                  <Card className={`relative overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 ${plan.popular ? 'border-primary border-2' : 'border-2'}`}>
                     {plan.popular && (
                       <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-3 py-1 text-sm">
                         Popular
@@ -289,7 +289,7 @@ const Index = () => {
                       </ul>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full" variant={plan.popular ? "default" : "outline"}>
+                      <Button className="w-full hover:scale-105 transition-all duration-300" variant={plan.popular ? "default" : "outline"}>
                         Get Started
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
@@ -323,29 +323,33 @@ const Index = () => {
                 viewport={{ once: true }}
               >
                 <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <div>
-                      <p className="font-medium">Cutting-edge AI Technology</p>
-                      <p className="text-muted-foreground">Advanced algorithms provide precise skill analysis</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <div>
-                      <p className="font-medium">Actionable Insights</p>
-                      <p className="text-muted-foreground">Clear, practical steps for improvement</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-2 mt-1" />
-                    <div>
-                      <p className="font-medium">User-Friendly Experience</p>
-                      <p className="text-muted-foreground">Intuitive interface designed for easy navigation</p>
-                    </div>
-                  </li>
-                </ul>
+                <Card className="border-2 shadow-sm hover:shadow-md transition-all duration-300">
+                  <CardContent className="pt-6">
+                    <ul className="space-y-4">
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-primary mr-2 mt-1" />
+                        <div>
+                          <p className="font-medium">Cutting-edge AI Technology</p>
+                          <p className="text-muted-foreground">Advanced algorithms provide precise skill analysis</p>
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-primary mr-2 mt-1" />
+                        <div>
+                          <p className="font-medium">Actionable Insights</p>
+                          <p className="text-muted-foreground">Clear, practical steps for improvement</p>
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-primary mr-2 mt-1" />
+                        <div>
+                          <p className="font-medium">User-Friendly Experience</p>
+                          <p className="text-muted-foreground">Intuitive interface designed for easy navigation</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
               </motion.div>
 
               <motion.div
@@ -362,7 +366,7 @@ const Index = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.2 }}
-                      className="bg-accent/5 p-6 rounded-lg"
+                      className="bg-accent/5 p-6 rounded-lg border-2 hover:shadow-md transition-all duration-300 hover:border-primary/30 hover:-translate-y-1"
                     >
                       <div className="flex items-center mb-4">
                         <Avatar className="h-10 w-10 mr-4">
