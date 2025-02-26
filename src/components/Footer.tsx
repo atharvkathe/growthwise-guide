@@ -1,6 +1,7 @@
 
 import { Github, Linkedin, Youtube, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const footerSections = [
@@ -23,8 +24,8 @@ export const Footer = () => {
     {
       title: "Legal",
       links: [
-        { label: "Privacy Policy", href: "#" },
-        { label: "Terms of Service", href: "#" },
+        { label: "Privacy Policy", href: "/privacy-policy" },
+        { label: "Terms of Service", href: "/terms-of-service" },
       ],
     },
   ];
@@ -46,12 +47,21 @@ export const Footer = () => {
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-                    >
-                      {link.label}
-                    </a>
+                    {link.href.startsWith("#") || link.href.startsWith("http") ? (
+                      <a
+                        href={link.href}
+                        className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -83,8 +93,26 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} SkillSense AI. All rights reserved.
+        <div className="mt-12 pt-8 border-t">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
+            <div className="mb-4 md:mb-0">
+              © {new Date().getFullYear()} SkillSense AI. All rights reserved.
+            </div>
+            <div className="flex gap-4">
+              <Link 
+                to="/privacy-policy"
+                className="hover:text-foreground transition-colors duration-200"
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                to="/terms-of-service"
+                className="hover:text-foreground transition-colors duration-200"
+              >
+                Terms of Service
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
