@@ -20,12 +20,6 @@ export const Navbar = () => {
         
         <div className="hidden md:flex items-center space-x-8">
           <NavLinks onSectionClick={scrollToSection} />
-          <Link 
-            to="/learn-more"
-            className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-          >
-            Learn More
-          </Link>
         </div>
 
         <div className="flex items-center gap-4">

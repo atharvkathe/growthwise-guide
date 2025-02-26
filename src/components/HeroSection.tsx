@@ -29,7 +29,7 @@ export const HeroSection = () => {
           Get personalized insights and actionable strategies to accelerate your professional growth
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+        <div className="flex justify-center mt-8">
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-white transition-all duration-300 group"
@@ -37,13 +37,6 @@ export const HeroSection = () => {
           >
             Start Assessment
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-2 hover:bg-accent/5 transition-all duration-300"
-          >
-            Learn More
           </Button>
         </div>
       </motion.div>
