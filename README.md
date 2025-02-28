@@ -1,10 +1,16 @@
-# Welcome to your Lovable project
+# Welcome! This repository contains a React-based web application built with modern technologies to ensure high performance and an excellent development experience.
 
-## Project info
+🚀 Project Overview
 
-## How can I edit this code?
+This project is built using the following technologies:
 
-There are several ways of editing your application.
+Vite - A fast build tool for modern web applications.
+React - A JavaScript library for building user interfaces.
+TypeScript - A strongly typed superset of JavaScript.
+shadcn-ui - A UI component library for building beautiful interfaces.
+Tailwind CSS - A utility-first CSS framework for styling.
+
+
 
 
 **Use your preferred IDE**
@@ -53,10 +59,3 @@ This project is built with .
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/0c267f35-60ab-434b-8eb2-d07dccda904c) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
