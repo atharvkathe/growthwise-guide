@@ -171,7 +171,7 @@ const AssessmentResults = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-xl"
+            className="rounded-2xl p-6 shadow-xl border-2 border-green-100"
           >
             <h2 className="text-2xl font-bold mb-6 text-green-600">Top Strengths</h2>
             <div className="space-y-6">
@@ -193,7 +193,7 @@ const AssessmentResults = () => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-xl"
+            className="rounded-2xl p-6 shadow-xl border-2 border-orange-100"
           >
             <h2 className="text-2xl font-bold mb-6 text-orange-600">Areas to Improve</h2>
             <div className="space-y-6">
@@ -216,7 +216,7 @@ const AssessmentResults = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-xl"
+          className="rounded-2xl p-6 shadow-xl border-2"
         >
           <h2 className="text-2xl font-bold mb-6">Skills Overview</h2>
           <div className="h-[300px]">
@@ -242,7 +242,7 @@ const AssessmentResults = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-xl"
+          className="rounded-2xl p-6 shadow-xl border-2"
         >
           <h2 className="text-2xl font-bold mb-6">Recommended Learning Path</h2>
           <div className="space-y-4">
@@ -252,7 +252,7 @@ const AssessmentResults = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center space-x-4 p-4 rounded-lg bg-white/50"
+                className="flex items-center space-x-4 p-4 rounded-lg border border-primary/10"
               >
                 <div className="bg-primary/10 p-2 rounded-full">
                   {index === 0 ? (
