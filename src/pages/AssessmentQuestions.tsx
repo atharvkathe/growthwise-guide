@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -94,12 +93,7 @@ const AssessmentQuestions = () => {
   };
 
   const handleBack = () => {
-    if (step === 1) {
-      // Navigate back to the assessment page when on first step
-      navigate("/assessment");
-    } else {
-      setStep((prev) => prev - 1);
-    }
+    setStep((prev) => prev - 1);
   };
 
   const renderStep = () => {
@@ -150,7 +144,11 @@ const AssessmentQuestions = () => {
           <Button
             variant="ghost"
             onClick={handleBack}
-            className="transition-opacity"
+            disabled={step === 1}
+            className={cn(
+              "transition-opacity",
+              step === 1 ? "opacity-0" : "opacity-100"
+            )}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back
