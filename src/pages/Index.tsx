@@ -357,6 +357,22 @@ const Index = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
+                <h3 className="text-2xl font-bold mb-4">Our Commitment</h3>
+                <Card className="border-2 shadow-sm hover:shadow-md transition-all duration-300 h-full">
+                  <CardContent className="pt-6">
+                    <p className="text-muted-foreground">
+                      At SkillSense AI, we are dedicated to empowering individuals with AI-driven skill enhancement. Whether you're a beginner or a professional, our platform adapts to your needs, providing personalized learning paths, insightful analytics, and goal-oriented progress tracking—all designed to accelerate your growth.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="lg:col-span-2"
+              >
                 <h3 className="text-2xl font-bold mb-4">Success Stories</h3>
                 <div className="space-y-6">
                   {testimonials.map((testimonial, index) => (
