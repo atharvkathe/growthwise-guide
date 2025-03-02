@@ -99,8 +99,8 @@ const learningResources = {
     title: "FreeCodeCamp Web Development Course",
   },
   finance: {
-    url: "https://www.edx.org/learn/finance/introduction-to-finance-accounting",
-    title: "Introduction to Finance & Accounting",
+    url: "https://www.edx.org/search?q=finance",
+    title: "EdX Finance Courses",
   },
   marketing: {
     url: "https://www.hubspot.com/resources/courses/digital-marketing",
